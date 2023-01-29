@@ -1,0 +1,18 @@
+
+equation : (TENSOR | VARIABLE) EQUALS operation
+
+operation : expr ((OPERATION) expr ((COMMA) object)* ) *
+
+expr : term ((PLUS|MINUS) term)*
+
+term : pow ((MUL|DIV) pow)*
+
+pow : object ((POW) object)
+
+object : INT 
+       | FLOAT 
+       | TENSOR 
+       | VARIABLE
+       | OPPERATOR
+       | LPAREN expr RPAREN
+       | LPAREN operation RPAREN
